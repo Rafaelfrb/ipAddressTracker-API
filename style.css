@@ -8,12 +8,48 @@ body {
     text-align: center;
 }
 
+.bodycontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.871rem;
+    letter-spacing: 0.01rem;
+}
+
+.search-container {
+    width: 100%;
+    margin-top: 1.8rem;
+    display: flex;
+    justify-content: center;
+}
+
 input {
-    width: 400px;
+    width: 31.2rem;
+    height: 3.68rem;
+    font-size: 18px;
+    border: 0.5px solid white;
+    border-radius: 11px 0 0 11px;
+}
+
+.button {
+    color: white;
+    background-color: black;
+    width: 3.5rem;
+    border-radius: 0 11px 11px 0;
+    font-size: 1.5rem;
 }
 
 .container {
+    margin-top: 2.8rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: space-around;
+    border: 0.5px solid black;
+    border-radius: 13px;
+    width: 69.33rem;
+    height: 9.94rem;
+    background-color: white;
+    color: gray;
 }
