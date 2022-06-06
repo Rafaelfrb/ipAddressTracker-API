@@ -1,10 +1,21 @@
-const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_mzCEinScHa7QTAjGtsWNZbO27JBNi&ipAddress=${ip}`
+const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_mzCEinScHa7QTAjGtsWNZbO27JBNi&ipAddress=189.6.37.166`
 
-const ip = document.querySelector(".inputip");
+const ip = "189.6.37.166";
 
-function (ip) {
-    fetch('url')
-      .then(function (response)) {
-        console.log(response)
-    }
-}
+async function getData() {
+
+  const response = await fetch(url);
+
+  const data = await response.json();
+
+  return data;
+
+  console.log('dados: ', data);
+
+  /*const data = await response.json()
+
+    console.log('dados: ', data);*/
+
+};
+
+getData(url);
