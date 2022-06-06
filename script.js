@@ -12,10 +12,6 @@ async function getData() {
 
   console.log('dados: ', data);
 
-  /*const data = await response.json()
-
-    console.log('dados: ', data);*/
-
 };
 
-getData(url);
+console.log(getData());
