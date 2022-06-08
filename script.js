@@ -1,6 +1,7 @@
-const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_mzCEinScHa7QTAjGtsWNZbO27JBNi&ipAddress=189.6.37.166`
-
 const ip = "189.6.37.166";
+const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_mzCEinScHa7QTAjGtsWNZbO27JBNi&ipAddress=${ip}`
+var map = L.map('map').setView([51.505, -0.09], 13);
+
 
 async function getData() {
 
@@ -8,10 +9,42 @@ async function getData() {
 
   const data = await response.json();
 
-  return data;
+  const location =  data.location.region;
+  const country = data.location.country;
+  const isp = data.as.name;
+  const timezone = data.location.timezone;
 
-  console.log('dados: ', data);
 
+  console.log(data);
+  console.log(location);
+  console.log(country);
+  console.log(isp);
+
+  let html = `
+                        <div class="innercontainer">
+                          <p>IP ADDRESS</p>
+                          <p class="info">${ip}</p>
+                        </div> 
+
+                        <div class="innercontainer">
+                          <p>LOCATION</p>
+                          <p class="info">${location}, ${country}</p>
+                        </div>
+
+                        <div class="innercontainer">
+                          <p>TIMEZONE</p>
+                          <p class="info">UTC ${timezone}</p>
+                        </div>
+
+                        <div class="innercontainer">
+                          <p>ISP</p>
+                          <p class="info">${isp}</p>
+                        </div>  
+                      </div>
+                    `;
+
+  let container = document.querySelector('.container');
+  container.innerHTML = html;
 };
 
-console.log(getData());
+getData();
