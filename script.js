@@ -1,7 +1,6 @@
-const ip = "189.6.37.166";
-const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_mzCEinScHa7QTAjGtsWNZbO27JBNi&ipAddress=${ip}`
-var map = L.map('map').setView([51.505, -0.09], 13);
+let ip = "189.6.37.166"; //default IP for when the page is opened
 
+const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_mzCEinScHa7QTAjGtsWNZbO27JBNi&ipAddress=${ip}`
 
 async function getData() {
 
@@ -13,12 +12,10 @@ async function getData() {
   const country = data.location.country;
   const isp = data.as.name;
   const timezone = data.location.timezone;
-
+  const lat = data.location.lat;
+  const long = data.location.lng;
 
   console.log(data);
-  console.log(location);
-  console.log(country);
-  console.log(isp);
 
   let html = `
                         <div class="innercontainer">
