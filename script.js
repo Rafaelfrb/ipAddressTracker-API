@@ -1,21 +1,25 @@
-let ip = "189.6.37.166"; //default IP for when the page is opened
-
-const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_mzCEinScHa7QTAjGtsWNZbO27JBNi&ipAddress=${ip}`
 
 async function getData() {
-
+  let ip = document.getElementById('inputip').value;
+  let url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_mzCEinScHa7QTAjGtsWNZbO27JBNi&ipAddress=${ip}`
   const response = await fetch(url);
 
   const data = await response.json();
 
-  const location =  data.location.region;
-  const country = data.location.country;
-  const isp = data.as.name;
-  const timezone = data.location.timezone;
-  const lat = data.location.lat;
-  const long = data.location.lng;
-
+  const location =  await data.location.region;
+  const country = await data.location.country;
+  const isp = await data.as.name;
+  const timezone = await data.location.timezone;
+  const lat = await data.location.lat;
+  const long = await data.location.lng;
   console.log(data);
+
+  var map = L.map('map').setView([lat, long], 13);
+  var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+  
 
   let html = `
                         <div class="innercontainer">
@@ -44,4 +48,4 @@ async function getData() {
   container.innerHTML = html;
 };
 
-getData();
+//getData();
