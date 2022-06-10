@@ -6,8 +6,6 @@
     document.getElementById('inputip').value = data.ip;
 	})
 
-getData();
-
 async function getData() {
 
   let ip = document.getElementById('inputip').value;
